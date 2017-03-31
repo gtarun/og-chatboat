@@ -1,0 +1,79 @@
+.collagesearchListBtn {
+    margin-left: 1%;
+    margin-top: 0.5%
+}
+
+.curserClass {
+    cursor: pointer;
+}
+
+.imgSet {
+    margin-left: 42%;
+    margin-top: 10%;
+}
+
+.divMargin {
+    margin-left: 2%;
+}
+
+.errDiv {
+    width: 20%;
+    margin-left: 35%;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.addPicDiv {
+    margin-left: 1%;
+    margin-top: 1%;
+    float: left;
+    background: darkgray;
+    height: 556px;
+    width: 31%;
+}
+
+.imageShowDiv {
+    height: 80%;
+    width: 100%;
+}
+
+.addImageShow {
+    height: 100%;
+    width: 100%;
+}
+
+.addAnchor {
+    color: white;
+    font-style: oblique;
+    font-weight: lighter;
+}
+
+.addDetailBoxShadow {
+    box-shadow: 2px -20px 35px 0px;
+}
+
+.addH1 {
+    color: darkslategrey;
+    font-family: cursive;
+    font-size: x-large;
+    font-variant: small-caps;
+    font-weight: bolder;
+    margin-top: 0%;
+}
+
+.collageDetailsH5 {
+    margin-left: 2%;
+    width: 80%;
+    margin-top: 1%;
+    color: darkcyan;
+    font-size: small;
+    font-weight: 900;
+}
+
+.colageDetailsBoxShadow {
+    box-shadow: 10px -20px 35px 0px;
+}
+
+.detailsCloseBtn {
+    margin-left: 2%;
+}
