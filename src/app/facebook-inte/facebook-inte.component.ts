@@ -71,7 +71,7 @@ connectPage(item, i){
   //let access_token = "792069617611842|vuCRMvbZcZhv0OslCzkpoTgCUqQ";
   //console.log('Access Token: ', self.tok);
   this.pageSubscribeUrl = "https://graph.facebook.com/"+ this.pageId + '/subscribed_apps?access_token='+ this.pageToken;
-  let urlS="https://graph.facebook.com/"+this.pageId+"/subscriptions?object=page&callback_url=https://7e0826a7.ngrok.io/userwebhook&fields=messages&verify_token=outgrow_messanger_bot_verify_code_user&access_token=792069617611842|vuCRMvbZcZhv0OslCzkpoTgCUqQ";
+  let urlS="https://graph.facebook.com/"+this.pageId+"/subscriptions?object=page&callback_url=https://23954f7a.ngrok.io/userwebhook&fields=messages&verify_token=outgrow_messanger_bot_verify_code_user&access_token=792069617611842|vuCRMvbZcZhv0OslCzkpoTgCUqQ";
   console.log('URL IS: ', urlS);
   this.http.post(urlS, {})
     .subscribe(response=>{
