@@ -34,7 +34,7 @@ user_label_share = [];
   }
 
  loginFb(){
-   this.fb.login({scope: 'email, manage_pages, read_page_mailboxes,publish_pages,pages_messaging'}).then(
+   this.fb.login({scope: 'email, manage_pages, read_page_mailboxes,publish_pages, pages_messaging'}).then(
       (response: FacebookLoginResponse) =>{
         let url = 'https://graph.facebook.com/'+response.authResponse.userID+'/accounts?access_token='+response.authResponse.accessToken;
         console.log('User Access Token: ', response.authResponse.accessToken);
