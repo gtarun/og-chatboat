@@ -1,0 +1,11 @@
+<button class="btn btn-primary" (click)="loginFb()">Facebook Login</button>
+<div *ngIf="showDiv" style="margin-left: 10%;">
+    <div *ngFor="let item of user_pages; let i = index;">
+        <div class="alert alert-info" style="margin-top: 1%;height: 100px;">
+            <button class="btn btn-primary">{{item.name}}</button>
+            <button class="btn btn-primary" (click)="connectPage(item, i);">Connect</button>
+            <h3><label class="label" style="color: black;" *ngIf="user_label_share[i]">Share Link: https://www.facebook.com/messages/t/{{item.id}}</label></h3>
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="openWindow()">Create New Page</button>
+</div>

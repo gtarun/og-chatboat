@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class CollageFinderFrontendPage {
+export class OgMessageBotPage {
   navigateTo() {
     return browser.get('/');
   }

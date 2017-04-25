@@ -1,10 +1,10 @@
-import { CollageFinderFrontendPage } from './app.po';
+import { OgMessageBotPage } from './app.po';
 
-describe('collage-finder-frontend App', function() {
-  let page: CollageFinderFrontendPage;
+describe('og-message-bot App', () => {
+  let page: OgMessageBotPage;
 
   beforeEach(() => {
-    page = new CollageFinderFrontendPage();
+    page = new OgMessageBotPage();
   });
 
   it('should display message saying app works', () => {
