@@ -18,7 +18,7 @@ pageToken: string = '';
 pageSubscribeUrl: string = '';
 user_pages = [];
 user_label_share = [];
-routeRoot = 'https://salty-everglades-74818.herokuapp.com';
+routeRoot = 'https://og-chat-bot.herokuapp.com';
   constructor(public fb: FacebookService, public http: Http) { 
     let fbParams : InitParams = {
         appId: this.bipId,
