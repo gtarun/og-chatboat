@@ -1,9 +1,0 @@
-.borderOn {
-    border-color: lightblue;
-    border-width: 3px;
-}
-
-.borderOff {
-    border-style: none;
-    border-color: transparent;
-}
