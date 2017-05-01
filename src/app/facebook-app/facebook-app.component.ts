@@ -18,7 +18,8 @@ pageToken: string = '';
 pageSubscribeUrl: string = '';
 user_pages = [];
 user_label_share = [];
-routeRoot = 'https://og-chat-bot.herokuapp.com';
+facebookLogBtn: boolean = true;
+routeRoot = 'https://651709a3.ngrok.io';
   constructor(public fb: FacebookService, public http: Http) { 
     let fbParams : FacebookInitParams = {
         appId: this.bipId,
@@ -33,6 +34,7 @@ routeRoot = 'https://og-chat-bot.herokuapp.com';
  loginFb(){
    this.fb.login({scope: 'email, manage_pages, read_page_mailboxes,publish_pages, pages_messaging'}).then(
       (response: FacebookLoginResponse) =>{
+        this.facebookLogBtn = false;
         let url = 'https://graph.facebook.com/'+response.authResponse.userID+'/accounts?access_token='+response.authResponse.accessToken;
         console.log('User Access Token: ',response.authResponse.userID, response.authResponse.accessToken);
         this.http.get(url).map((res,Response)=> res.json())
@@ -90,8 +92,15 @@ connectPage(item, i){
             console.log('Start Button: ', res);
             let head = new Headers();
             head.append('Content-Type', 'application/json');
-            this.http.post(this.routeRoot + '/api/v1/messenger/pageinfo', {pageId: this.pageId, accessToken: this.pageToken}, {headers: head})
-            .subscribe(res=> console.log('Access token and Page Id Send')
+            let data = {
+              page_id: this.pageId,
+              accessToken: this.pageToken
+            };
+            this.http.post(this.routeRoot + '/api/v1/messenger/pageinfo', data, {headers: head})
+            .subscribe(res=> {
+              this.user_label_share[i] = true;
+              console.log('Access token and Page Id Send');
+            }
             , err=> console.log('AccessToken and PageId Not Send', err))
           }, err=>{
             console.log('Get Start Error: ', err);
