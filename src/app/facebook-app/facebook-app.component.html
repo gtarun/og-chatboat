@@ -3,8 +3,9 @@
     <div *ngFor="let item of user_pages; let i = index;">
         <div class="alert alert-info" style="margin-top: 1%;height: auto;">
             <button class="btn btn-primary">{{item.name}}</button>
-            <button class="btn btn-primary" (click)="connectPage(item, i);" *ngIf="!user_label_share[i]">Connect</button>
+            <button class="btn btn-primary" (click)="connectPage(item, i);" *ngIf="!user_label_share[i]" [disabled]="process_array[i]">Connect</button>
             <h5 style="display: inline; padding-left: 2%;"><a style="color: black;" target="-blank" href="https://www.messenger.com/t/{{item.id}}" *ngIf="user_label_share[i]">Share Link: https://www.messenger.com/t/{{item.id}}</a></h5>
+            <i *ngIf="process_array[i]">Processing...</i>
         </div>
     </div>
     <button class="btn btn-primary" (click)="openWindow()">Create New Page</button>

@@ -18,8 +18,10 @@ pageToken: string = '';
 pageSubscribeUrl: string = '';
 user_pages = [];
 user_label_share = [];
+process_array = [];
 facebookLogBtn: boolean = true;
-routeRoot = 'https://651709a3.ngrok.io';
+logStatus: boolean = false;
+routeRoot = 'https://b04e557f.ngrok.io';
   constructor(public fb: FacebookService, public http: Http) { 
     let fbParams : FacebookInitParams = {
         appId: this.bipId,
@@ -46,6 +48,9 @@ routeRoot = 'https://651709a3.ngrok.io';
             this.user_pages.forEach((obj)=>{
               this.user_label_share.push(false);
             })
+            this.user_pages.forEach((obj)=>{
+              this.process_array.push(false);
+            })
             console.log('User Label: ', this.user_label_share);
           },
           err=>{
@@ -60,6 +65,7 @@ routeRoot = 'https://651709a3.ngrok.io';
 
 
 connectPage(item, i){
+  this.process_array[i] = true;
   console.log('Select Page is: ', item.name, item.id, i);
   console.log('Page Subscribe Url: ', this.pageSubscribeUrl);
   this.pageToken = item.access_token;
@@ -99,16 +105,25 @@ connectPage(item, i){
             this.http.post(this.routeRoot + '/api/v1/messenger/pageinfo', data, {headers: head})
             .subscribe(res=> {
               this.user_label_share[i] = true;
+              this.logStatus = false;
               console.log('Access token and Page Id Send');
             }
-            , err=> console.log('AccessToken and PageId Not Send', err))
+            , err=> {
+              console.log('AccessToken and PageId Not Send', err);
+              this.process_array[i] = false;
+            })
           }, err=>{
             console.log('Get Start Error: ', err);
+            this.process_array[i] = false;
           })
         }
-        ,err=> console.log('Page Subscribe Error: ', err))
+        ,err=> {
+          console.log('Page Subscribe Error: ', err);
+          this.process_array[i] = false;
+        })
     }, err=>{
       console.log('Webhook Subscribed Error: ', err);
+      this.process_array[i] = false;
   })
  }
  openWindow(){
