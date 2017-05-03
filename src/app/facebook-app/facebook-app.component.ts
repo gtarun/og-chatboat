@@ -20,7 +20,6 @@ user_pages = [];
 user_label_share = [];
 process_array = [];
 facebookLogBtn: boolean = true;
-logStatus: boolean = false;
 routeRoot = 'https://b04e557f.ngrok.io';
   constructor(public fb: FacebookService, public http: Http) { 
     let fbParams : FacebookInitParams = {
@@ -105,7 +104,7 @@ connectPage(item, i){
             this.http.post(this.routeRoot + '/api/v1/messenger/pageinfo', data, {headers: head})
             .subscribe(res=> {
               this.user_label_share[i] = true;
-              this.logStatus = false;
+              this.process_array[i] = false;
               console.log('Access token and Page Id Send');
             }
             , err=> {
