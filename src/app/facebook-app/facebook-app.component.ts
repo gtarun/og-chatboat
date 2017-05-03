@@ -19,7 +19,7 @@ pageSubscribeUrl: string = '';
 user_pages = [];
 user_label_share = [];
 facebookLogBtn: boolean = true;
-routeRoot = 'https://651709a3.ngrok.io';
+routeRoot = 'https://og-chat-bot.herokuapp.com';
   constructor(public fb: FacebookService, public http: Http) { 
     let fbParams : FacebookInitParams = {
         appId: this.bipId,
