@@ -26,13 +26,13 @@ firstLoadDiv: boolean = true;
 showDiv: boolean = false;
 
 //Releted Facebook App
-appId: any = 'Facebook Client Id'; 
-appSecret: any = 'Facebook Client Secret'; 
-appAccessToken: any = 'Facebook App Access Token';
+appId: any = '792069617611842'; 
+appSecret: any = '41d54e064a632d0696943ec75abdd985'; 
+appAccessToken: any = '792069617611842|vuCRMvbZcZhv0OslCzkpoTgCUqQ';
 
 // Company Id
-company: any = '59178a10935cd91b04dd80bd'
-cal: any = '591d3f55cfc57d0c080e363b';
+company: any = '5922ca0a7148720011dd0e95';// company-id
+cal: any = '5922cb857148720011dd0fd9';//app-id
 
 //Supported Variables
 logdo: boolean = false;
