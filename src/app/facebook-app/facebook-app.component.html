@@ -1,12 +1,27 @@
-<button class="btn btn-primary" (click)="loginFb()" *ngIf="facebookLogBtn">Facebook Login</button>
-<div *ngIf="showDiv" style="margin-left: 10%; width: 80%;">
-    <div *ngFor="let item of user_pages; let i = index;">
-        <div class="alert alert-info" style="margin-top: 1%;height: auto;">
-            <button class="btn btn-primary">{{item.name}}</button>
-            <button class="btn btn-primary" (click)="connectPage(item, i);" *ngIf="!user_label_share[i]" [disabled]="process_array[i]">Connect</button>
-            <h5 style="display: inline; padding-left: 2%;"><a style="color: black;" target="-blank" href="https://www.messenger.com/t/{{item.id}}" *ngIf="user_label_share[i]">Share Link: https://www.messenger.com/t/{{item.id}}</a></h5>
-            <i *ngIf="process_array[i]">Processing...</i>
+<div *ngIf="subscribedPageDiv" style="margin-left: 10%; width: 80%; height: auto;">
+    <div *ngFor="let item of SubscribedPageList; let i =index;">
+        <div class="alert alert-info" style="margin-top: 1%; border: solid; width: 80%; height: 100%;">
+            <h5 style="float: left;  margin-left: 1%;"> {{item.name}}</h5>
+            <h5 style="float: left; margin-left: 8%"> Share Link: <a target="blank" href="{{item.slink}}"> {{item.slink}} </a></h5>
+            <button class="btn btn-danger" style=" float: right;" (click)="unsubscribe(item, i)" [disabled]="selectSubsIndex == i">Unsubscribe Page</button>
+            <div style="clear:both "></div>
         </div>
     </div>
-    <button class="btn btn-primary" (click)="openWindow()">Create New Page</button>
+</div>
+
+<div class="alert alert-warning" style="margin-left: 10%;width: 64%;height: auto;" *ngIf="logBtnDiv ">
+    <h4 style="float:left; margin-left: 0.75%; margin-top: 1.5%; color: blue;">facebook</h4>
+    <button class=" btn btn-default " style="float: right; margin-right: 1%; " type="buttton " (click)="loginFb()">+    Connect With Facebook</button>
+    <div style="clear:both "></div>
+</div>
+<div *ngIf="unsubscribedPageDiv " style="margin-left: 10%; width: 80%; ">
+    <div *ngFor="let item of unsubscribedPageList; let i=index; ">
+        <div class="alert alert-info " style="margin-top: 1%;height: auto; ">
+            <button class="btn btn-primary disabled" style="float: left;">{{item.name}}</button>
+            <button class="btn btn-danger" style="float: left; margin-left: 2%;" (click)="connectPage(item, i);" [disabled]='selectUnSubsIndex == i'>Connect</button>
+            <i style="margin-left: 2%;" *ngIf="process_array[i] ">Processing...</i>
+            <div style="clear:both "></div>
+        </div>
+    </div>
+    <button class="btn btn-primary " (click)="openWindow() ">Create New Page</button>
 </div>

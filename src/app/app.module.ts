@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { FacebookAppComponent } from './facebook-app/facebook-app.component';
+import { HttpserviceService } from './httpservice.service';
+import { GraphApiService } from './graph-api.service';
+import { FacebookService } from 'ng2-facebook-sdk';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,7 @@ import { FacebookAppComponent } from './facebook-app/facebook-app.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [HttpserviceService, FacebookService, GraphApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
