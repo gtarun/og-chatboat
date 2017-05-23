@@ -41,7 +41,7 @@ userData: any;
 dat: any;
 selectSubsIndex: any;
 selectUnSubsIndex: any;
-routeRoot = 'redirect url';
+routeRoot = 'https://outgrow-biz-api.herokuapp.com';
   constructor(private fb: FacebookService, private backend: HttpserviceService, private graphApi: GraphApiService) { 
     let fbParams : FacebookInitParams = {
         appId: this.appId,

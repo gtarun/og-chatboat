@@ -11,7 +11,7 @@ export class HttpserviceService {
   constructor(public http: Http) { 
     this.header = new Headers();
     this.header.append('Content-Type', 'application/json');
-    this.router = 'http://localhost:3000/api/v1/integration';
+    this.router = 'https://outgrow-biz-api.herokuapp.com/api/v1/integration';
   }
   
  getUserToken(data): any {
