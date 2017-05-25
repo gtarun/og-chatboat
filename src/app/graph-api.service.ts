@@ -62,7 +62,7 @@ export class GraphApiService {
 
  unsubscribePage(data): any {
    console.log('Page Unsubscibed: ', data);
-   this.url = this.graph + '/v2.8/me/subscribed_apps?access_token=' + data.accessToken
+   this.url = this.graph + '/v2.8/'+data.pageId+'/subscribed_apps?access_token=' + data.accessToken;  
    return this.http.delete(this.url)
    .map((res: Response)=> { return res.json() })
    .catch((error)=> { return error.json()})

@@ -41,7 +41,8 @@ userData: any;
 dat: any;
 selectSubsIndex: any;
 selectUnSubsIndex: any;
-routeRoot = 'https://outgrow-biz-api.herokuapp.com';
+routeRoot = 'http://outgrow-biz-api.herokuapp.com/api/v1';
+pageAccessToken: any;
   constructor(private fb: FacebookService, private backend: HttpserviceService, private graphApi: GraphApiService) { 
     let fbParams : FacebookInitParams = {
         appId: this.appId,
@@ -51,6 +52,9 @@ routeRoot = 'https://outgrow-biz-api.herokuapp.com';
     this.fb.init(fbParams);
   }
   ngOnInit() {
+    this.backend.calIntegration({appId: this.cal}).subscribe((data)=>{
+       this.pageAccessToken = data.data.chatbot ? data.data.chatbot : null;
+    })
      this.backend.getUserToken({companyId: this.company})
      .subscribe((data)=>{
        console.log('Get Token Data: ', data.data);
@@ -132,6 +136,12 @@ connectPage(item, i): any {
    this.selectUnSubsIndex = i;
    this.process_array[i] = true;
    console.log('App Access Token: ', this.appAccessToken);
+   if(this.pageAccessToken) {
+     this.graphApi.unsubscribePage({accessToken: this.pageAccessToken.access_token, pageId:this.pageAccessToken.page_id})
+      .subscribe((result)=>{
+        console.log('Unsubscribe Previous Config',result);
+      })
+    }
    this.graphApi.webhookSubscribe({pageId: item.id, redirectUrl: this.routeRoot + '/api/v1/messenger/chatbot', accessToken: this.appAccessToken})
    .subscribe(webhook=>{
       this.graphApi.pageSubscribe({accessToken: item.access_token})
@@ -157,6 +167,7 @@ connectPage(item, i): any {
                     name: item.name
                   }
                   this.SubscribedPageList.push(obj);
+                  this.SubscribedPageList.splice(0,1);
                   this.removeItem(i);
                   this.subscribedPageDiv = true;
                   this.process_array[i]= false;
@@ -251,6 +262,10 @@ listingPageToken(response){
             this.unsubscribedPageList.push(element);
             this.share_link.push(false);
             this.process_array.push(true);
+             this.graphApi.unsubscribePage({accessToken: element.access_token})
+              .subscribe((result)=>{
+                console.log(element.name,'Unsubscribe Previous Config',result);
+              })
         }  
      });
      console.log('Pages2: ', this.unsubscribedPageList);
